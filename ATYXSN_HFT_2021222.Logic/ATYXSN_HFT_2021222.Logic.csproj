@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ATYXSN_HFT_2021222.Models\ATYXSN_HFT_2021222.Models.csproj" />
+    <ProjectReference Include="..\ATYXSN_HFT_2021222.Repository\ATYXSN_HFT_2021222.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
