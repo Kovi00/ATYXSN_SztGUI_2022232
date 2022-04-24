@@ -20,6 +20,11 @@ namespace ATYXSN_HFT_2021222.Models
 
         public virtual ICollection<Match> Matches { get; set; }
 
+        public Bookmaker()
+        {
+
+        }
+
         public Bookmaker(string input)
         {
             string[] split = input.Split('#');

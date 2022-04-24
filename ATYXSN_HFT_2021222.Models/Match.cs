@@ -22,7 +22,7 @@ namespace ATYXSN_HFT_2021222.Models
 
         public char Outcome { get; set; }
 
-        [Range(1,200)]
+        [Range(1.00,199.99)]
         public double Odds { get; set; }
 
         [ForeignKey(nameof(Bookmaker))]
@@ -31,6 +31,11 @@ namespace ATYXSN_HFT_2021222.Models
         public virtual Bookmaker Bookmaker { get; set; }
 
         public virtual ICollection<Bettor> Bettors { get; set; }
+
+        public Match()
+        {
+
+        }
 
         public Match(string input)
         {

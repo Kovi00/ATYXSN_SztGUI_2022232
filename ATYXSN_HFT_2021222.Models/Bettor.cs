@@ -23,6 +23,11 @@ namespace ATYXSN_HFT_2021222.Models
 
         public virtual Match Match { get; set; }
 
+        public Bettor()
+        {
+
+        }
+
         public Bettor(string input)
         {
             string[] split = input.Split('#');
