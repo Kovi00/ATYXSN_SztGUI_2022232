@@ -5,20 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="match.mdf" />
-    <None Remove="match_log.ldf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="match.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="match_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="5.0.16" />
