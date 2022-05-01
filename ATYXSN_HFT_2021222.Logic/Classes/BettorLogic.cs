@@ -59,10 +59,11 @@ namespace ATYXSN_HFT_2021222.Logic
                        BetsPlaced = g.Count()
                    };
         }
-    }
-    public class BookmakerInfo
-    {
-        public string BookmakerName { get; set; }
-        public int BetsPlaced { get; set; }
+
+        public class BookmakerInfo
+        {
+            public string BookmakerName { get; set; }
+            public int BetsPlaced { get; set; }
+        }
     }
 }

@@ -61,18 +61,18 @@ namespace ATYXSN_HFT_2021222.Logic
                        NumOfMatches = g.Count()
                    };
         }
-    }
 
-    public class OddsInfo
-    {
-        public double AvgOdds { get; set; }
-        public string BookmakerName { get; set; }
-    }
+        public class OddsInfo
+        {
+            public double AvgOdds { get; set; }
+            public string BookmakerName { get; set; }
+        }
 
-    public class BiggestBookmaker
-    {
-        public string BookmakerName { get; set; }
-        public int NumOfMatches { get; set; }
+        public class BiggestBookmaker
+        {
+            public string BookmakerName { get; set; }
+            public int NumOfMatches { get; set; }
 
+        }
     }
 }

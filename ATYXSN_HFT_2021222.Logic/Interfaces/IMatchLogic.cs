@@ -1,4 +1,5 @@
 ﻿using ATYXSN_HFT_2021222.Models;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ATYXSN_HFT_2021222.Logic
@@ -10,5 +11,7 @@ namespace ATYXSN_HFT_2021222.Logic
         Match Read(int id);
         IQueryable<Match> ReadAll();
         void Update(Match item);
+        IEnumerable<MatchLogic.OddsInfo> AverageOddsByBookmaker();
+        IEnumerable<MatchLogic.BiggestBookmaker> MostVariety();
     }
 }
