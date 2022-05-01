@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace ATYXSN_HFT_2021222.Models
 {
@@ -28,8 +29,10 @@ namespace ATYXSN_HFT_2021222.Models
         [ForeignKey(nameof(Bookmaker))]
         public int BookmakerId { get; set; }
 
+        [JsonIgnore]
         public virtual Bookmaker Bookmaker { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Bettor> Bettors { get; set; }
 
         public Match()

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ATYXSN_HFT_2021222.Models
@@ -21,6 +22,7 @@ namespace ATYXSN_HFT_2021222.Models
         [ForeignKey(nameof(Match))]
         public int MatchId { get; set; }
 
+        [JsonIgnore]
         public virtual Match Match { get; set; }
 
         public Bettor()
