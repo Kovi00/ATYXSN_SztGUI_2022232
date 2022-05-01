@@ -7,35 +7,35 @@ namespace ATYXSN_HFT_2021222.Endpoint.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MatchController : ControllerBase
+    public class BookmakerController : ControllerBase
     {
-        IMatchLogic logic;
+        IBookmakerLogic logic;
 
-        public MatchController(IMatchLogic logic)
+        public BookmakerController(IBookmakerLogic logic)
         {
             this.logic = logic;
         }
 
         [HttpGet]
-        public IEnumerable<Match> ReadAll()
+        public IEnumerable<Bookmaker> ReadAll()
         {
             return this.logic.ReadAll();
         }
 
         [HttpGet("{id}")]
-        public Match Read(int id)
+        public Bookmaker Read(int id)
         {
             return this.logic.Read(id);
         }
 
         [HttpPost]
-        public void Create([FromBody] Match value)
+        public void Create([FromBody] Bookmaker value)
         {
             this.logic.Create(value);
         }
 
         [HttpPut]
-        public void Update([FromBody] Match value)
+        public void Update([FromBody] Bookmaker value)
         {
             this.logic.Update(value);
         }
