@@ -1,6 +1,8 @@
 ﻿using ATYXSN_HFT_2021222.Logic;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using static ATYXSN_HFT_2021222.Logic.MatchLogic;
+using static ATYXSN_HFT_2021222.Models.Match;
 
 namespace ATYXSN_HFT_2021222.Endpoint.Controllers
 {
@@ -16,25 +18,25 @@ namespace ATYXSN_HFT_2021222.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AverageOddsByBookmaker()
+        public IEnumerable<OddsInfo> AverageOddsByBookmaker()
         {
             return this.logic.AverageOddsByBookmaker();
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, int>> MatchOffersByBookmaker()
+        public IEnumerable<MatchInfo> MatchOffersByBookmaker()
         {
             return this.logic.MatchOffersByBookmaker();
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> BiggestOddsByBookmaker()
+        public IEnumerable<BiggestOdds> BiggestOddsByBookmaker()
         {
             return this.logic.BiggestOddsByBookmaker();
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, int>> NumberOfDrawsByBookmaker()
+        public IEnumerable<DrawInfo> NumberOfDrawsByBookmaker()
         {
             return this.logic.NumberOfDrawsByBookmaker();
         }
