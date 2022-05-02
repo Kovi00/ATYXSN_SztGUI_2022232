@@ -42,28 +42,12 @@ namespace ATYXSN_HFT_2021222.Logic
             this.repo.Update(item);
         }
 
-        public IEnumerable<Bettor> BettorsByOutcome(char outcome)
+        public IEnumerable<KeyValuePair<string, int>> BetsByBookmaker()
         {
             return from x in this.repo.ReadAll()
-                   where x.Match.Outcome == char.Parse(outcome.ToString().ToUpper())
-                   select x;
-        }
-
-        public IEnumerable<BookmakerInfo> MostPopularBookmaker()
-        {
-            return from x in this.repo.ReadAll()
-                   group x by x.Match.Bookmaker into g
-                   select new BookmakerInfo()
-                   {
-                       BookmakerName = g.Key.BookmakerName,
-                       BetsPlaced = g.Count()
-                   };
-        }
-
-        public class BookmakerInfo
-        {
-            public string BookmakerName { get; set; }
-            public int BetsPlaced { get; set; }
+                   group x by x.Match.Bookmaker.BookmakerName into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count());
         }
     }
 }

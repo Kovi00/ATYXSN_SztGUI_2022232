@@ -40,56 +40,37 @@ namespace ATYXSN_HFT_2021222.Logic
             this.repo.Update(item);
         }
 
-        public IEnumerable<OddsInfo> AverageOddsByBookmaker()
+        public IEnumerable<KeyValuePair<string, double>> AverageOddsByBookmaker()
         {
             return from x in this.repo.ReadAll()
-                   group x by x.Bookmaker into g
-                   select new OddsInfo()
-                   {
-                        BookmakerName = g.Key.BookmakerName,
-                        AvgOdds = g.Average(t => t.Odds)
-                   };
+                   group x by x.Bookmaker.BookmakerName into g
+                   select new KeyValuePair<string, double>
+                   (g.Key, g.Average(t => t.Odds));
         }
 
-        public IEnumerable<BiggestBookmaker> MostVariety()
+        public IEnumerable<KeyValuePair<string, int>> MatchOffersByBookmaker()
         {
             return from x in this.repo.ReadAll()
-                   group x by x.Bookmaker into g
-                   select new BiggestBookmaker()
-                   {
-                       BookmakerName = g.Key.BookmakerName,
-                       NumOfMatches = g.Count()
-                   };
+                   group x by x.Bookmaker.BookmakerName into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count());
         }
 
-        public IEnumerable<BiggestOdds> BiggestOddsByBookmaker()
+        public IEnumerable<KeyValuePair<string, double>> BiggestOddsByBookmaker()
         {
             return from x in this.repo.ReadAll()
-                   group x by x.Bookmaker into g
-                   select new BiggestOdds()
-                   {
-                       BookmakerName = g.Key.BookmakerName,
-                       MaxOdds = g.Max(t => t.Odds),
-                   };
+                   group x by x.Bookmaker.BookmakerName into g
+                   select new KeyValuePair<string, double>
+                   (g.Key, g.Max(t => t.Odds));
         }
 
-        public class OddsInfo
+        public IEnumerable<KeyValuePair<string, int>> NumberOfDrawsByBookmaker()
         {
-            public double AvgOdds { get; set; }
-            public string BookmakerName { get; set; }
-        }
-
-        public class BiggestBookmaker
-        {
-            public string BookmakerName { get; set; }
-            public int NumOfMatches { get; set; }
-
-        }
-
-        public class BiggestOdds
-        {
-            public string BookmakerName { get; set; }
-            public double MaxOdds { get; set; }
+            return from x in this.repo.ReadAll()
+                   where x.Outcome == 'X'
+                   group x by x.Bookmaker.BookmakerName into g
+                   select new KeyValuePair<string, int>
+                   (g.Key, g.Count());
         }
     }
 }

@@ -11,7 +11,6 @@ namespace ATYXSN_HFT_2021222.Logic
         Bettor Read(int id);
         IQueryable<Bettor> ReadAll();
         void Update(Bettor item);
-        IEnumerable<Bettor> BettorsByOutcome(char outcome);
-        IEnumerable<BettorLogic.BookmakerInfo> MostPopularBookmaker();
+        IEnumerable<KeyValuePair<string, int>> BetsByBookmaker();
     }
 }

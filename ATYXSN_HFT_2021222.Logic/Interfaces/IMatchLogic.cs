@@ -11,8 +11,9 @@ namespace ATYXSN_HFT_2021222.Logic
         Match Read(int id);
         IQueryable<Match> ReadAll();
         void Update(Match item);
-        IEnumerable<MatchLogic.OddsInfo> AverageOddsByBookmaker();
-        IEnumerable<MatchLogic.BiggestBookmaker> MostVariety();
-        IEnumerable<MatchLogic.BiggestOdds> BiggestOddsByBookmaker();
+        IEnumerable<KeyValuePair<string, double>> AverageOddsByBookmaker();
+        IEnumerable<KeyValuePair<string, int>> MatchOffersByBookmaker();
+        IEnumerable<KeyValuePair<string, double>> BiggestOddsByBookmaker();
+        IEnumerable<KeyValuePair<string, int>> NumberOfDrawsByBookmaker();
     }
 }
