@@ -51,5 +51,101 @@ namespace ATYXSN_HFT_2021222.Models
             BookmakerId = int.Parse(split[5]);
             Bettors = new HashSet<Bettor>();
         }
+
+        public class OddsInfo
+        {
+            public string Name { get; set; }
+            public double Odds { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                OddsInfo b = obj as OddsInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Name == b.Name && this.Odds == b.Odds;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(Name, Odds);
+            }
+        }
+
+        public class MatchInfo
+        {
+            public string Name { get; set; }
+            public int Matches { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                MatchInfo b = obj as MatchInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Name == b.Name && this.Matches == b.Matches;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(Name, Matches);
+            }
+        }
+
+        public class BiggestOdds
+        {
+            public string Name { get; set; }
+            public double Odds { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                BiggestOdds b = obj as BiggestOdds;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Name == b.Name && this.Odds == b.Odds;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(Name, Odds);
+            }
+        }
+
+        public class DrawInfo
+        {
+            public string Name { get; set; }
+            public int Draws { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                DrawInfo b = obj as DrawInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Name == b.Name && this.Draws == b.Draws;
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.Name, this.Draws);
+            }
+        }
     }
 }

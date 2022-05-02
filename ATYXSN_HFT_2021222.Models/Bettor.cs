@@ -37,5 +37,29 @@ namespace ATYXSN_HFT_2021222.Models
             BettorName = split[1];
             MatchId = int.Parse(split[2]);
         }
+
+        public class BetInfo
+        {
+            public string Name { get; set; }
+            public int Count { get; set; }
+
+            public override bool Equals(object obj)
+            {
+                BetInfo b = obj as BetInfo;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.Name == b.Name && this.Count == b.Count;
+                }
+            }
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.Name, this.Count);
+            }
+
+        }
     }
 }
