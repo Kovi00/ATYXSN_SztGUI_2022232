@@ -11,6 +11,7 @@ namespace ATYXSN_HFT_2021222.Client
         {
             RestService rest = new RestService("http://localhost:48810/", "match");
             CrudService crud = new CrudService(rest);
+            NonCrudService nonCrud = new NonCrudService(rest);
 
             var matchSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => crud.List<Match>())
@@ -33,10 +34,19 @@ namespace ATYXSN_HFT_2021222.Client
                 .Add("Update", () => crud.Update<Bookmaker>())
                 .Add("Exit", ConsoleMenu.Close);
 
+            var statSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("AverageOddsByBookmaker", () => nonCrud.AverageOddsByBookmaker())
+                .Add("MatchOffersByBookmaker", () => nonCrud.MatchOffersByBookmaker())
+                .Add("BiggestOddsByBookmaker", () => nonCrud.BiggestOddsByBookmaker())
+                .Add("NumberOfDrawsByBookmaker", () => nonCrud.NumberOfDrawsByBookmaker())
+                .Add("BetsByBookmaker", () => nonCrud.BetsByBookmaker())
+                .Add("Exit", ConsoleMenu.Close);
+
             var menu = new ConsoleMenu(args, level: 0)
                 .Add("Matches", () => matchSubMenu.Show())
                 .Add("Bettors", () => bettorSubMenu.Show())
                 .Add("Bookmakers", () => bookmakerSubMenu.Show())
+                .Add("Stats", () => statSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();
