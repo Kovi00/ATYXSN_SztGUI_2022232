@@ -1,6 +1,8 @@
 ﻿using ATYXSN_HFT_2021222.Models;
 using System.Collections.Generic;
 using System.Linq;
+using static ATYXSN_HFT_2021222.Logic.BettorLogic;
+using static ATYXSN_HFT_2021222.Models.Bettor;
 
 namespace ATYXSN_HFT_2021222.Logic
 {
@@ -11,6 +13,6 @@ namespace ATYXSN_HFT_2021222.Logic
         Bettor Read(int id);
         IQueryable<Bettor> ReadAll();
         void Update(Bettor item);
-        IEnumerable<KeyValuePair<string, int>> BetsByBookmaker();
+        IEnumerable<BetInfo> BetsByBookmaker();
     }
 }

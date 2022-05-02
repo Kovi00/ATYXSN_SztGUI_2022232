@@ -1,6 +1,8 @@
 ﻿using ATYXSN_HFT_2021222.Models;
 using System.Collections.Generic;
 using System.Linq;
+using static ATYXSN_HFT_2021222.Logic.MatchLogic;
+using static ATYXSN_HFT_2021222.Models.Match;
 
 namespace ATYXSN_HFT_2021222.Logic
 {
@@ -11,9 +13,9 @@ namespace ATYXSN_HFT_2021222.Logic
         Match Read(int id);
         IQueryable<Match> ReadAll();
         void Update(Match item);
-        IEnumerable<KeyValuePair<string, double>> AverageOddsByBookmaker();
-        IEnumerable<KeyValuePair<string, int>> MatchOffersByBookmaker();
-        IEnumerable<KeyValuePair<string, double>> BiggestOddsByBookmaker();
-        IEnumerable<KeyValuePair<string, int>> NumberOfDrawsByBookmaker();
+        IEnumerable<OddsInfo> AverageOddsByBookmaker();
+        IEnumerable<MatchInfo> MatchOffersByBookmaker();
+        IEnumerable<BiggestOdds> BiggestOddsByBookmaker();
+        IEnumerable<DrawInfo> NumberOfDrawsByBookmaker();
     }
 }
