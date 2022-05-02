@@ -13,5 +13,6 @@ namespace ATYXSN_HFT_2021222.Logic
         void Update(Match item);
         IEnumerable<MatchLogic.OddsInfo> AverageOddsByBookmaker();
         IEnumerable<MatchLogic.BiggestBookmaker> MostVariety();
+        IEnumerable<MatchLogic.BiggestOdds> BiggestOddsByBookmaker();
     }
 }

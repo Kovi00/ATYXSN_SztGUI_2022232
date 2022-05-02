@@ -62,6 +62,17 @@ namespace ATYXSN_HFT_2021222.Logic
                    };
         }
 
+        public IEnumerable<BiggestOdds> BiggestOddsByBookmaker()
+        {
+            return from x in this.repo.ReadAll()
+                   group x by x.Bookmaker into g
+                   select new BiggestOdds()
+                   {
+                       BookmakerName = g.Key.BookmakerName,
+                       MaxOdds = g.Max(t => t.Odds),
+                   };
+        }
+
         public class OddsInfo
         {
             public double AvgOdds { get; set; }
@@ -73,6 +84,12 @@ namespace ATYXSN_HFT_2021222.Logic
             public string BookmakerName { get; set; }
             public int NumOfMatches { get; set; }
 
+        }
+
+        public class BiggestOdds
+        {
+            public string BookmakerName { get; set; }
+            public double MaxOdds { get; set; }
         }
     }
 }
