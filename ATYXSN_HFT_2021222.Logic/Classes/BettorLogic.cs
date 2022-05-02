@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static ATYXSN_HFT_2021222.Models.Bettor;
 
 namespace ATYXSN_HFT_2021222.Logic
 {
@@ -19,6 +20,10 @@ namespace ATYXSN_HFT_2021222.Logic
 
         public void Create(Bettor item)
         {
+            if (item.BettorName.Length < 2)
+            {
+                throw new ArgumentException();
+            }
             this.repo.Create(item);
         }
 
@@ -39,15 +44,22 @@ namespace ATYXSN_HFT_2021222.Logic
 
         public void Update(Bettor item)
         {
+            if (item.BettorName.Length < 2)
+            {
+                throw new ArgumentException();
+            }
             this.repo.Update(item);
         }
 
-        public IEnumerable<KeyValuePair<string, int>> BetsByBookmaker()
+        public IEnumerable<BetInfo> BetsByBookmaker()
         {
             return from x in this.repo.ReadAll()
                    group x by x.Match.Bookmaker.BookmakerName into g
-                   select new KeyValuePair<string, int>
-                   (g.Key, g.Count());
+                   select new BetInfo()
+                   {
+                       Name = g.Key,
+                       Count = g.Count()
+                   };
         }
     }
 }

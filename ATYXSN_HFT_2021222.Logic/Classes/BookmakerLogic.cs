@@ -19,6 +19,10 @@ namespace ATYXSN_HFT_2021222.Logic
 
         public void Create(Bookmaker item)
         {
+            if (item.BookmakerName.Length < 5)
+            {
+                throw new ArgumentException();
+            }
             this.repo.Create(item);
         }
 
@@ -39,6 +43,10 @@ namespace ATYXSN_HFT_2021222.Logic
 
         public void Update(Bookmaker item)
         {
+            if (item.BookmakerName.Length < 5)
+            {
+                throw new ArgumentException();
+            }
             this.repo.Update(item);
         }
     }
