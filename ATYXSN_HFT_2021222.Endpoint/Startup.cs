@@ -1,3 +1,4 @@
+using ATYXSN_HFT_2021222.Endpoint.Services;
 using ATYXSN_HFT_2021222.Logic;
 using ATYXSN_HFT_2021222.Models;
 using ATYXSN_HFT_2021222.Repository;
@@ -39,6 +40,8 @@ namespace ATYXSN_HFT_2021222.Endpoint
             services.AddTransient<IBettorLogic, BettorLogic>();
             services.AddTransient<IBookmakerLogic, BookmakerLogic>();
 
+            services.AddSignalR();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -63,6 +66,7 @@ namespace ATYXSN_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
