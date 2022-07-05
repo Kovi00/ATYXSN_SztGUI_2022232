@@ -59,6 +59,12 @@ namespace ATYXSN_HFT_2021222.Endpoint
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ATYXSN_HFT_2021222.Endpoint v1"));
             }
 
+            app.UseCors(x => x
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:11848"));
+
             app.UseRouting();
 
             app.UseAuthorization();
