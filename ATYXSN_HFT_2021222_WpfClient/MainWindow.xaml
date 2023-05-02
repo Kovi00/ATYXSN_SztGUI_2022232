@@ -11,83 +11,149 @@
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox ItemsSource="{Binding Matches}" SelectedItem="{Binding SelectedMatch}" Grid.Column="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding MatchId}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Grid Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding Matches}" SelectedItem="{Binding SelectedMatch}" Grid.Column="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding MatchId}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-        <ListBox ItemsSource="{Binding Bettors}" SelectedItem="{Binding SelectedBettor}" Grid.Column="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding BettorName}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            <ListBox ItemsSource="{Binding Bettors}" SelectedItem="{Binding SelectedBettor}" Grid.Column="1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding BettorName}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-        <ListBox ItemsSource="{Binding Bookmakers}" SelectedItem="{Binding SelectedBookmaker}" Grid.Column="2">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Label Content="{Binding BookmakerName}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            <ListBox ItemsSource="{Binding Bookmakers}" SelectedItem="{Binding SelectedBookmaker}" Grid.Column="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Label Content="{Binding BookmakerName}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
 
-        <StackPanel Grid.Column="3">
-            <Label Content="Home" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedMatch.HomeTeam}" Padding="7" Margin="0,0,0,30"/>
-            <Button Content="Create" Command="{Binding CreateMatchCommand}" Margin="10" Padding="7" />
-            <Label Content="Bettor" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedBettor.BettorName}" Padding="7" Margin="0,0,0,30"/>
-            <Button Content="Create" Command="{Binding CreateBettorCommand}" Margin="10" Padding="7" />
-            <Label Content="Bookmaker" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedBookmaker.BookmakerName}" Padding="7" Margin="0,0,0,30"/>
-            <Button Content="Create" Command="{Binding CreateBookmakerCommand}" Margin="10" Padding="7" />
-        </StackPanel>
-
-        <StackPanel Grid.Column="4">
-            <Label Content="Away" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedMatch.AwayTeam}" Padding="7" Margin="0,0,0,30" />
-            <Label Padding="26" />
-            <Label Content="Match" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedBettor.MatchId}" Padding="7" Margin="0,0,0,30"/>
-        </StackPanel>
-
-        <StackPanel Grid.Column="5">
-            <Label Content="Outcome" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedMatch.Outcome}" Padding="7" Margin="0,0,0,30" />
-            <Button Content="Delete" Command="{Binding DeleteMatchCommand}" Margin="10" Padding="7" />
-            <Label Padding="46" />
-            <Button Content="Delete" Command="{Binding DeleteBettorCommand}" Margin="10" Padding="7" />
-            <Label Padding="46" />
-            <Button Content="Delete" Command="{Binding DeleteBookmakerCommand}" Margin="10" Padding="7" />
-        </StackPanel>
-
-        <StackPanel Grid.Column="6">
-            <Label Content="Odds" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedMatch.Odds}" Padding="7" Margin="0,0,0,30"/>
-        </StackPanel>
-
-        <StackPanel Grid.Column="7">
-            <Label Content="Bookmaker" Background="LightBlue" Padding="7" HorizontalContentAlignment="Center"/>
-            <TextBox Text="{Binding SelectedMatch.BookmakerId}" Padding="7" Margin="0,0,0,30"/>
-            <Button Content="Update" Command="{Binding UpdateMatchCommand}" Margin="10" Padding="7" />
-            <Label Padding="46" />
-            <Button Content="Update" Command="{Binding UpdateBettorCommand}" Margin="10" Padding="7" />
-            <Label Padding="46" />
-            <Button Content="Update" Command="{Binding UpdateBookmakerCommand}" Margin="10" Padding="7" />
-        </StackPanel>
-
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Matches" Background="RoyalBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Row="0"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Home" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="0"/>
+                    <Label Content="Away" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="1"/>
+                    <Label Content="Outcome" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="2"/>
+                    <Label Content="Odds" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="3"/>
+                    <Label Content="Bookmaker" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="4"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding SelectedMatch.HomeTeam}" Padding="7" Grid.Column="0"/>
+                    <TextBox Text="{Binding SelectedMatch.AwayTeam}" Padding="7" Grid.Column="1"/>
+                    <TextBox Text="{Binding SelectedMatch.Outcome}" Padding="7" Grid.Column="2"/>
+                    <TextBox Text="{Binding SelectedMatch.Odds}" Padding="7" Grid.Column="3"/>
+                    <TextBox Text="{Binding SelectedMatch.BookmakerId}" Padding="7" Grid.Column="4"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Create Match" Command="{Binding CreateMatchCommand}" Padding="7" Grid.Column="0"/>
+                    <Button Content="Delete Match" Command="{Binding DeleteMatchCommand}" Padding="7" Grid.Column="1"/>
+                    <Button Content="Update Match" Command="{Binding UpdateMatchCommand}" Padding="7" Grid.Column="2"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Bettor" Background="RoyalBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Row="0"/>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Name" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="0"/>
+                    <Label Content="MatchId" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Column="1"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Text="{Binding SelectedBettor.BettorName}" Padding="7" Grid.Column="0"/>
+                    <TextBox Text="{Binding SelectedBettor.MatchId}" Padding="7" Grid.Column="1"/>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Create Bettor" Command="{Binding CreateBettorCommand}" Padding="7" Grid.Column="0"/>
+                    <Button Content="Delete Bettor" Command="{Binding DeleteBettorCommand}" Padding="7" Grid.Column="1"/>
+                    <Button Content="Update Bettor" Command="{Binding UpdateBettorCommand}" Padding="7" Grid.Column="2"/>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label Content="Bookmaker" Background="RoyalBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Row="0"/>
+                <Label Content="Name" Background="LightBlue" Padding="7" BorderBrush="Gray" BorderThickness="1" HorizontalContentAlignment="Center" Grid.Row="1"/>
+                <TextBox Text="{Binding SelectedBookmaker.BookmakerName}" Padding="7" Grid.Column="0" Grid.Row="2"/>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Create Bookmaker" Command="{Binding CreateBookmakerCommand}" Padding="7" Grid.Column="0"/>
+                    <Button Content="Delete Bookmaker" Command="{Binding DeleteBookmakerCommand}" Padding="7" Grid.Column="1"/>
+                    <Button Content="Update Bookmaker" Command="{Binding UpdateBookmakerCommand}" Padding="7" Grid.Column="2"/>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
