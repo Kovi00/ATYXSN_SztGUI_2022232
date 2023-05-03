@@ -47,7 +47,6 @@ async function getdata() {
         .then(x => x.json())
         .then(y => {
             bookmakers = y;
-            //console.log(bookmakers)
             display();
         });
 }
