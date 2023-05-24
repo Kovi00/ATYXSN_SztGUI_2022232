@@ -1,5 +1,6 @@
 ﻿let bookmakers = [];
 let connection = null;
+let noncrudarray = [];
 
 let bookmakerIdToUpdate = -1;
 getdata();
@@ -124,4 +125,33 @@ function remove (id) {
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
+}
+
+function noncrud() {
+    fetch('http://localhost:48810/MatchStat/AverageOddsByBookmaker')
+        .then(x => x.json())
+        .then(y => {
+            noncrudarray = y;
+            var table = document.getElementById("table");
+            table.innerHTML = "";
+            table.style.width = "100%";
+            var tr = document.createElement("tr");
+            var th1 = document.createElement("th");
+            var th2 = document.createElement("th");
+            th1.innerHTML = "Name";
+            th2.innerHTML = "Odds";
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            table.appendChild(tr);
+            for (var i = 0; i < y.length; i++) {
+                var tr = document.createElement("tr");
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                td1.innerHTML = y[i].name;
+                td2.innerHTML = y[i].odds;
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                table.appendChild(tr);
+            }
+        });
 }
