@@ -50,6 +50,11 @@ namespace ATYXSN_HFT_2021222.Endpoint.Controllers
         public void Delete(int id)
         {
             var bookmakerToDelete = this.logic.Read(id);
+            foreach (var match in logic.Read(id).Matches)
+            {
+                logic.Read(id).Matches.Remove(match);
+                this.hub.Clients.All.SendAsync("MatchDeleted", match);
+            }
             this.logic.Delete(id);
             this.hub.Clients.All.SendAsync("BookmakerDeleted", bookmakerToDelete);
         }

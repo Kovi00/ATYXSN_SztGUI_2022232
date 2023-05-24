@@ -29,18 +29,18 @@ namespace ATYXSN_HFT_2021222.Repository
                 .HasOne(match => match.Bookmaker)
                 .WithMany(bookmaker => bookmaker.Matches)
                 .HasForeignKey(match => match.BookmakerId)
-                .OnDelete(DeleteBehavior.Cascade));
+                .OnDelete(DeleteBehavior.ClientCascade));
 
             modelBuilder.Entity<Bettor>(bettor => bettor
                 .HasOne(bettor => bettor.Match)
                 .WithMany(match => match.Bettors)
                 .HasForeignKey(bettor => bettor.MatchId)
-                .OnDelete(DeleteBehavior.Cascade));
+                .OnDelete(DeleteBehavior.ClientCascade));
 
             modelBuilder.Entity<Bookmaker>()
                 .HasMany(bookmaker => bookmaker.Matches)
                 .WithOne(match => match.Bookmaker)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.ClientCascade);
 
             modelBuilder.Entity<Match>().HasData(new Match[]
             {
