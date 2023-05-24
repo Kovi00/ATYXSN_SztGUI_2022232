@@ -85,7 +85,7 @@
                     <TextBox Text="{Binding SelectedMatch.AwayTeam}" Padding="7" Grid.Column="1"/>
                     <TextBox Text="{Binding SelectedMatch.Outcome}" Padding="7" Grid.Column="2"/>
                     <TextBox Text="{Binding SelectedMatch.Odds}" Padding="7" Grid.Column="3"/>
-                    <TextBox Text="{Binding SelectedMatch.BookmakerId}" Padding="7" Grid.Column="4"/>
+                    <TextBox Text="{Binding SelectedMatch.BookmakerId}" Padding="7" Grid.Column="4" MaxLength="1"/>
                 </Grid>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -120,7 +120,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox Text="{Binding SelectedBettor.BettorName}" Padding="7" Grid.Column="0"/>
-                    <TextBox Text="{Binding SelectedBettor.MatchId}" Padding="7" Grid.Column="1"/>
+                    <TextBox Text="{Binding SelectedBettor.MatchId}" Padding="7" Grid.Column="1" MaxLength="1"/>
                 </Grid>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
